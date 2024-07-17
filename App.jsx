@@ -9,6 +9,7 @@ import CartScreen from './Screens/CartScreen';
 import messaging from '@react-native-firebase/messaging';
 import { store } from './store';
 import { Provider } from 'react-redux';
+import PaymentScreen from './Screens/PaymentScreen';
 
 
 
@@ -50,6 +51,11 @@ function App() {
         <Stack.Screen
           name="Cart"
           component={CartScreen}
+          options={{headerShown:false}}
+        />
+        <Stack.Screen
+          name="Payment"
+          component={PaymentScreen}
           options={{headerShown:false}}
         />
       </Stack.Navigator>

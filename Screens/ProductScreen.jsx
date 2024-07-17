@@ -59,7 +59,7 @@ const ProductScreen = (props) => {
                 <View className='flex-row justify-between items-start'>
                     <Text className='text-3xl' style={{color:themeColors.text}}>$ {fruit.price}</Text>
                     {!qtyInCart && <TouchableOpacity className='text-3xl p-3 ml-6 flex-1 rounded-xl' style={{backgroundColor:fruit.shadow , opacity:0.9,shadowColor:fruit.shadow,shadowRadius:25,shadowOffset:{width:0,height:15},shadowOpacity:0.5,elevation:9}} onPress={handelAddToCart}><Text className='text-center text-white font-bold text-xl'>Add to Cart</Text></TouchableOpacity>}
-                    {qtyInCart>0 && <><QuantityStepper buttonColor={fruit.color} initialQuantity={qtyInCart} min={1} max={10} step={1} onChange={handelUpdateQuantity} /></>}
+                    {qtyInCart>0 && <><QuantityStepper id={fruit.id} buttonColor={fruit.color} initialQuantity={qtyInCart} min={1} max={10} step={1} onChange={handelUpdateQuantity} /></>}
                 </View>
             </View>
         </View>

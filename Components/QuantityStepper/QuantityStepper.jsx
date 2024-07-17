@@ -1,11 +1,13 @@
 // QuantityStepper.js
 import React, { useState } from 'react';
-import { View, Text, Button, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, Button, StyleSheet, TouchableOpacity, Alert } from 'react-native';
 import { MinusIcon, PlusIcon } from 'react-native-heroicons/micro';
+import { removeItem } from '../../slices/navSlice';
+import { useDispatch } from 'react-redux';
 
-const QuantityStepper = ({ initialQuantity = 0, min = 1, max = 100, step = 1, onChange, buttonColor = 'blue' }) => {
+const QuantityStepper = ({ id,initialQuantity = 0, min = 1, max = 100, step = 1, onChange, buttonColor = 'blue' }) => {
     const [quantity, setQuantity] = useState(initialQuantity);
-
+    const dispatch = useDispatch()
     const increaseQuantity = () => {
         if (quantity < max) {
             const newQuantity = quantity + step;
@@ -17,6 +19,16 @@ const QuantityStepper = ({ initialQuantity = 0, min = 1, max = 100, step = 1, on
         if (quantity > min) {
             const newQuantity = quantity - step;
             setQuantity(newQuantity);
+        }
+        else{
+            Alert.alert(
+                'Remove From Cart',
+                'My Alert Msg', // <- this part is optional, you can pass an empty string
+                [
+                  {text: 'OK', onPress: () => dispatch(removeItem({ id })) },
+                ],
+                {cancelable: false},
+              );
         }
     };
 
