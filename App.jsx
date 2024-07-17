@@ -7,6 +7,8 @@ import HomeScreen from './Screens/HomeScreen';
 import ProductScreen from './Screens/ProductScreen';
 import CartScreen from './Screens/CartScreen';
 import messaging from '@react-native-firebase/messaging';
+import { store } from './store';
+import { Provider } from 'react-redux';
 
 
 
@@ -19,15 +21,11 @@ function App() {
     const enabled =
       authStatus === messaging.AuthorizationStatus.AUTHORIZED ||
       authStatus === messaging.AuthorizationStatus.PROVISIONAL;
-  
-    if (enabled) {
-      console.log('Authorization status:', authStatus);
-    }
   }
 
   const getToken = async() =>{
     const token = await messaging().getToken()
-    console.log("Token = ",token)
+    // console.log("Token = ",token)
   }
 
   useEffect(() => {
@@ -36,6 +34,7 @@ function App() {
   }, [])
 
   return (
+    <Provider store={store}>
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
@@ -55,6 +54,7 @@ function App() {
         />
       </Stack.Navigator>
     </NavigationContainer>
+    </Provider>
   )
 }
 

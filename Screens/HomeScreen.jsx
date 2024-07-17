@@ -1,5 +1,5 @@
 // import { ShoppingCartIcon } from '@heroicons/react/16/solid';
-import React, { useState } from 'react'
+import React, { useMemo, useState } from 'react'
 import { ScrollView, Text, TouchableOpacity, View } from 'react-native'
 import { Bars3CenterLeftIcon, SparklesIcon as SparklesIconMicro, ShoppingCartIcon } from "react-native-heroicons/micro";
 
@@ -9,9 +9,14 @@ import FruitCard from '../Components/FruitCard';
 import FruitCardSalse from '../Components/FruitCardSalse';
 import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useSelector } from 'react-redux';
+import {  selectCart } from '../slices/navSlice';
 function HomeScreen() {
   const [asctiveCategory, setActiveCategory] = useState('Orange')
   const navigation = useNavigation()
+  
+ 
+
   return (
     <SafeAreaView className="flex-1 bg-orange-50">
       <ScrollView className='mb-5'>

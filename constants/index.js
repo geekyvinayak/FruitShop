@@ -1,6 +1,7 @@
 export const categories = ["Orange", "Banana","Pineapple","Apple","Cheery"];
 export const featuredFruits = [
   {
+    id:10,
     name: "Australian Orange",
     price: "12.30",
     stars: 2,
@@ -10,6 +11,7 @@ export const featuredFruits = [
     color: (opacity) => `rgba(251, 216, 146, ${opacity})`,
   },
   {
+    id:11,
     name: "Black Grapes",
     price: "40",
     stars: 5,
@@ -19,6 +21,7 @@ export const featuredFruits = [
     color: (opacity) => `rgba(214, 195, 246, ${opacity})`,
   },
   {
+    id:12,
     name: "Red Grapefruit",
     price: "30",
     stars: 4,
@@ -28,6 +31,7 @@ export const featuredFruits = [
     color: (opacity) => `rgba(255, 163, 120, ${opacity})`,
   },
   {
+    id:13,
     name: "Strawberry",
     price: "12.30",
     stars: 3,
@@ -37,6 +41,7 @@ export const featuredFruits = [
     color: (opacity) => `rgba(253,164,175, ${opacity})`,
   },
   {
+    id:14,
     name: "Green Apple",
     price: "10.5",
     stars: 4,
@@ -46,6 +51,7 @@ export const featuredFruits = [
     color: (opacity) => `rgba(139, 243, 139, ${opacity})`,
   },
   {
+    id:15,
     name: "Flesh Nectari",
     shadow: "#f87171",
     price: "12",
