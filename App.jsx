@@ -1,5 +1,5 @@
 // import { ShoppingCartIcon } from '@heroicons/react/16/solid';
-import React, { useEffect } from 'react'
+import React, { useEffect , useState } from 'react'
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -10,12 +10,13 @@ import messaging from '@react-native-firebase/messaging';
 import { store } from './store';
 import { Provider } from 'react-redux';
 import PaymentScreen from './Screens/PaymentScreen';
-
-
+import OtpScreen from './Screens/OtpScreen';
 
 const Stack = createNativeStackNavigator();
 
 function App() {
+
+  
 
   async function requestUserPermission() {
     const authStatus = await messaging().requestPermission();
@@ -29,11 +30,12 @@ function App() {
     // console.log("Token = ",token)
   }
 
+
   useEffect(() => {
     requestUserPermission();
     getToken();
   }, [])
-
+ 
   return (
     <Provider store={store}>
     <NavigationContainer>
@@ -56,6 +58,11 @@ function App() {
         <Stack.Screen
           name="Payment"
           component={PaymentScreen}
+          options={{headerShown:false}}
+        />
+        <Stack.Screen
+          name="OtpVerification"
+          component={OtpScreen}
           options={{headerShown:false}}
         />
       </Stack.Navigator>
