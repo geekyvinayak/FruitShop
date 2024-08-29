@@ -27,7 +27,7 @@ function HomeScreen() {
         <View className="flex-row justify-between items-center mx-5 py-2">
           <Bars3CenterLeftIcon size="35" color="black" />
           <View className="flex-row gap-2">
-          <TouchableOpacity
+            <TouchableOpacity
               className="bg-orange-100 p-2 rounded-xl"
               onPress={() => navigation.navigate('OtpVerification')}>
               <UserCircleIcon size="35" color="orange" />

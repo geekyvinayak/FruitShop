@@ -1,1 +1,1 @@
-export {default} from './SendOtp'
+export {default} from './SendOtp';

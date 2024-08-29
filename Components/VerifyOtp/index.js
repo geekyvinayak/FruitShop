@@ -1,1 +1,1 @@
-export {default} from './VerifyOtp'
+export {default} from './VerifyOtp';

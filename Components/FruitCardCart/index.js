@@ -1,1 +1,1 @@
-export {default} from './FruitCardCard'
+export {default} from './FruitCardCard';

@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
-import { View, TextInput, Button, StyleSheet, Alert, Text } from 'react-native';
+import React, {useState} from 'react';
+import {View, TextInput, Button, StyleSheet, Alert, Text} from 'react-native';
 
-
-const VerifyOtp = (props) => {
+const VerifyOtp = props => {
   const [inputValue, setInputValue] = useState('');
 
   return (
@@ -12,10 +11,12 @@ const VerifyOtp = (props) => {
         style={styles.input}
         placeholder="Enter your Otp"
         value={inputValue}
-        onChangeText={(text) => setInputValue(text)}
+        onChangeText={text => setInputValue(text)}
       />
-      <Button title="Submit" onPress={()=>props.onSubmit(inputValue)} />
-      <Text style={styles.notice}>Use Otp for testing : <Text style={styles.noticeValue}>123456</Text></Text>
+      <Button title="Submit" onPress={() => props.onSubmit(inputValue)} />
+      <Text style={styles.notice}>
+        Use Otp for testing : <Text style={styles.noticeValue}>123456</Text>
+      </Text>
     </View>
   );
 };
@@ -33,13 +34,13 @@ const styles = StyleSheet.create({
     marginBottom: 12,
     paddingHorizontal: 8,
   },
-  notice:{
-    marginTop:25,
-    color:"red"
+  notice: {
+    marginTop: 25,
+    color: 'red',
   },
-  noticeValue:{
-    color:"blue"
-  }
+  noticeValue: {
+    color: 'blue',
+  },
 });
 
 export default VerifyOtp;

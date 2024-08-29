@@ -1,5 +1,5 @@
-import React, { useRef } from 'react';
-import { ScrollView, View, Text, StyleSheet, Animated } from 'react-native';
+import React, {useRef} from 'react';
+import {ScrollView, View, Text, StyleSheet, Animated} from 'react-native';
 
 const InfiniteScroll = () => {
   const scrollY = useRef(new Animated.Value(0)).current;
@@ -7,21 +7,24 @@ const InfiniteScroll = () => {
   const prevScrollY = useRef(0);
 
   const handleScroll = Animated.event(
-    [{ nativeEvent: { contentOffset: { y: scrollY } } }],
-    { useNativeDriver: true, listener: (event) => {
-      const offsetY = event.nativeEvent.contentOffset.y;
-      const scrollDiff = offsetY - prevScrollY.current;
+    [{nativeEvent: {contentOffset: {y: scrollY}}}],
+    {
+      useNativeDriver: true,
+      listener: event => {
+        const offsetY = event.nativeEvent.contentOffset.y;
+        const scrollDiff = offsetY - prevScrollY.current;
 
-      if (scrollDiff > 5) {
-        // Scrolling down
-        hideFooter();
-      } else if (scrollDiff < -5) {
-        // Scrolling up
-        showFooter();
-      }
+        if (scrollDiff > 5) {
+          // Scrolling down
+          hideFooter();
+        } else if (scrollDiff < -5) {
+          // Scrolling up
+          showFooter();
+        }
 
-      prevScrollY.current = offsetY;
-    }}
+        prevScrollY.current = offsetY;
+      },
+    },
   );
 
   const hideFooter = () => {
@@ -45,10 +48,9 @@ const InfiniteScroll = () => {
       <Animated.ScrollView
         stickyHeaderIndices={[1]}
         className="relative"
-        style={{ flex: 1 }}
+        style={{flex: 1}}
         onScroll={handleScroll}
-        scrollEventThrottle={16}
-      >
+        scrollEventThrottle={16}>
         {/* Component1 */}
         <View style={styles.component1}>
           <Text>Component 1</Text>
@@ -73,9 +75,8 @@ const InfiniteScroll = () => {
       <Animated.View
         style={[
           styles.stickyFooter,
-          { transform: [{ translateY: footerTranslateY }] },
-        ]}
-      >
+          {transform: [{translateY: footerTranslateY}]},
+        ]}>
         <Text>Footer</Text>
       </Animated.View>
     </View>

@@ -1,11 +1,13 @@
-import React from 'react'
-import { View } from 'react-native'
-import { Text } from 'react-native-svg'
+import React from 'react';
+import {View} from 'react-native';
+import {Text} from 'react-native-svg';
 
 function ProductDetails() {
   return (
-    <View><Text>ProductDetails</Text></View>
-  )
+    <View>
+      <Text>ProductDetails</Text>
+    </View>
+  );
 }
 
-export default ProductDetails
+export default ProductDetails;

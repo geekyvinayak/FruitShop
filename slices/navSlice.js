@@ -1,7 +1,7 @@
-import { createSlice } from '@reduxjs/toolkit';
+import {createSlice} from '@reduxjs/toolkit';
 
 const initialState = {
-  cart: []
+  cart: [],
 };
 
 export const navSlice = createSlice({
@@ -23,10 +23,8 @@ export const navSlice = createSlice({
   },
 });
 
-export const { addItem ,  removeItem ,updateQty } = navSlice.actions;
+export const {addItem, removeItem, updateQty} = navSlice.actions;
 
+export const selectCart = state => state.nav.cart;
 
-export const selectCart = (state) => state.nav.cart
-
-
-export default navSlice.reducer
+export default navSlice.reducer;

@@ -13,7 +13,7 @@ const OtpScreen = () => {
 
   const navitgation = useNavigation();
   async function signIn(phoneNumber) {
-    setLoading(true)
+    setLoading(true);
     try {
       const number = '+91 ' + phoneNumber;
       const confirmation = await auth().signInWithPhoneNumber(number);
@@ -22,27 +22,27 @@ const OtpScreen = () => {
       alert(
         'THIS IS TESTING MODE PLEASE USE NUMBER PROVIDED AT FIREBSE TESTING',
       );
-    }finally {
+    } finally {
       setLoading(false);
     }
   }
 
   async function confirmVerificationCode(code) {
-    setLoading(true)
+    setLoading(true);
     try {
       await confirm.confirm(code);
       alert('code verified');
       setConfirm(null);
     } catch (error) {
       alert('Invalid code');
-    }finally {
+    } finally {
       setLoading(false);
     }
   }
 
   return (
     <SafeAreaView className="flex-1">
-      <FullScreenLoader isLoading={loading}/>
+      <FullScreenLoader isLoading={loading} />
       <View className="flex-row justify-start mx-5 mt-5">
         <TouchableOpacity
           className="bg-orange-100 p-2 rounded-xl"
