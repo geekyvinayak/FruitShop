@@ -14,8 +14,6 @@ import FruitCard from '../Components/FruitCard';
 import FruitCardSalse from '../Components/FruitCardSalse';
 import {useNavigation} from '@react-navigation/native';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import {useSelector} from 'react-redux';
-import {selectCart} from '../slices/navSlice';
 function HomeScreen() {
   const [asctiveCategory, setActiveCategory] = useState('Orange');
   const navigation = useNavigation();

@@ -1,5 +1,5 @@
-import {TouchableOpacity, View} from 'react-native';
-import React, {useState} from 'react';
+import {Linking, TouchableOpacity, View, Text, Alert} from 'react-native';
+import React, {useCallback, useState} from 'react';
 import SendOtp from '../Components/SendOtp';
 import VerifyOtp from '../Components/VerifyOtp';
 import auth from '@react-native-firebase/auth';
@@ -40,10 +40,32 @@ const OtpScreen = () => {
     }
   }
 
+  const handleOpenSettings = useCallback(async () => {
+    // Open the custom settings if the app has one
+    await Linking.openSettings();
+  }, []);
+
+  const handlePress = async () => {
+    // Checking if the link is supported for links with custom URL scheme.
+    try {
+      const supported = await Linking.canOpenURL('https://google.com');
+
+      if (supported) {
+        // Opening the link with some app, if the URL scheme is "http" the web link should be opened
+        // by some browser in the mobile
+        await Linking.openURL('https://google.com');
+      } else {
+        Alert.alert(`Don't know how to open this URL: ${'https://google.com'}`);
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   return (
     <SafeAreaView className="flex-1">
       <FullScreenLoader isLoading={loading} />
-      <View className="flex-row justify-start mx-5 mt-5">
+      <View className="flex-row justify-start mx-5 mt-5 ">
         <TouchableOpacity
           className="bg-orange-100 p-2 rounded-xl"
           onPress={() => {
@@ -53,11 +75,24 @@ const OtpScreen = () => {
           <ChevronLeftIcon size="35" color="orange" />
         </TouchableOpacity>
       </View>
-      {confirm ? (
-        <VerifyOtp onSubmit={confirmVerificationCode} />
-      ) : (
-        <SendOtp onSubmit={signIn} />
-      )}
+      <View className="flex-1 justify-center">
+        {confirm ? (
+          <VerifyOtp onSubmit={confirmVerificationCode} />
+        ) : (
+          <SendOtp onSubmit={signIn} />
+        )}
+
+        <TouchableOpacity
+          onPress={handleOpenSettings}
+          className="mx-5 mt-5 bg-orange-400 p-5 items-center">
+          <Text className="font-bold">Goto Setting</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={handlePress}
+          className="mx-5 mt-5 bg-orange-400 p-5 items-center">
+          <Text className="font-bold">Open Browser</Text>
+        </TouchableOpacity>
+      </View>
     </SafeAreaView>
   );
 };
