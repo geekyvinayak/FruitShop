@@ -3,8 +3,6 @@ import React, {useState} from 'react';
 import {
   View,
   Text,
-  Button,
-  StyleSheet,
   TouchableOpacity,
   Alert,
 } from 'react-native';
@@ -13,8 +11,8 @@ import {removeItem} from '../../slices/navSlice';
 import {useDispatch} from 'react-redux';
 
 const QuantityStepper = ({
-  id,
-  name,
+
+  fruit,
   initialQuantity = 0,
   min = 1,
   max = 100,
@@ -22,6 +20,7 @@ const QuantityStepper = ({
   onChange,
   buttonColor = 'blue',
 }) => {
+  const {id,name}=fruit
   const [quantity, setQuantity] = useState(initialQuantity);
   const dispatch = useDispatch();
   const increaseQuantity = () => {

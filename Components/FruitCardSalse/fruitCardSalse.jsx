@@ -10,7 +10,7 @@ const FruitCardSalse = ({fruit}) => {
       <TouchableOpacity
         className="-mb-9 flex-row justify-center shadow-lg z-10"
         onPress={() =>
-          natvigation.navigate('Product', {...fruit, color: fruit.color(1)})
+          natvigation.navigate('Product', {id:13})
         }>
         <Image
           source={fruit.image}

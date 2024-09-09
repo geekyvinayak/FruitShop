@@ -14,7 +14,16 @@ import OtpScreen from './Screens/OtpScreen';
 
 const Stack = createNativeStackNavigator();
 
-function App() {
+function App() { 
+  const linking = {
+    prefixes:['https://fullstack-nextjs-virid.vercel.app/app'],
+    config:{
+      screens:{
+        OtpVerification:'OtpVerification',
+        Product:"product/:id"
+      }
+    }
+  }
   async function requestUserPermission() {
     const authStatus = await messaging().requestPermission();
     const enabled =
@@ -24,7 +33,7 @@ function App() {
 
   const getToken = async () => {
     const token = await messaging().getToken();
-    // console.log("Token = ",token)
+    console.log("Token =",token)
   };
 
   useEffect(() => {
@@ -34,7 +43,7 @@ function App() {
 
   return (
     <Provider store={store}>
-      <NavigationContainer>
+      <NavigationContainer linking={linking}>
         <Stack.Navigator>
           <Stack.Screen
             name="Home"

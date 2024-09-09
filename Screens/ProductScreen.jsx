@@ -8,9 +8,12 @@ import StarRating from 'react-native-star-rating-widget';
 import {useDispatch, useSelector} from 'react-redux';
 import {addItem, selectCart, updateCart, updateQty} from '../slices/navSlice';
 import QuantityStepper from '../Components/QuantityStepper';
+import { featuredFruits } from '../constants';
 
 const ProductScreen = props => {
-  fruit = props.route.params;
+  const {id} = props.route.params;
+  let fruit = featuredFruits.find(obj => obj.id == id);
+  fruit = {...fruit, color: fruit.color(1)}
   const navitgation = useNavigation();
 
   const cart = useSelector(selectCart);
@@ -103,8 +106,8 @@ const ProductScreen = props => {
           {qtyInCart > 0 && (
             <>
               <QuantityStepper
-                id={fruit.id}
-                name={fruit.name}
+              fruit={fruit}
+                
                 buttonColor={fruit.color}
                 initialQuantity={qtyInCart}
                 min={1}
