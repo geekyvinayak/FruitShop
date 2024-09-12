@@ -1,6 +1,6 @@
 // import { ShoppingCartIcon } from '@heroicons/react/16/solid';
 import React, {useMemo, useState} from 'react';
-import {ScrollView, Text, TouchableOpacity, View} from 'react-native';
+import {Image, ScrollView, Text, TouchableOpacity, View} from 'react-native';
 import {
   Bars3CenterLeftIcon,
   SparklesIcon as SparklesIconMicro,
@@ -14,10 +14,12 @@ import FruitCard from '../Components/FruitCard';
 import FruitCardSalse from '../Components/FruitCardSalse';
 import {useNavigation} from '@react-navigation/native';
 import {SafeAreaView} from 'react-native-safe-area-context';
+import { selectUser } from '../slices/navSlice';
+import { useSelector } from 'react-redux';
 function HomeScreen() {
   const [asctiveCategory, setActiveCategory] = useState('Orange');
   const navigation = useNavigation();
-
+  const userDetails = useSelector(selectUser);
   return (
     <SafeAreaView className="flex-1 bg-orange-50">
       <ScrollView className="mb-5">
@@ -28,7 +30,9 @@ function HomeScreen() {
             <TouchableOpacity
               className="bg-orange-100 p-2 rounded-xl"
               onPress={() => navigation.navigate('OtpVerification')}>
-              <UserCircleIcon size="35" color="orange" />
+             { userDetails.user?.photo ? <Image source={{
+          uri: userDetails.user.photo,
+        }} style={{width: 35, height: 35}} />: <UserCircleIcon size="35" color="orange" />}
             </TouchableOpacity>
             <TouchableOpacity
               className="bg-orange-100 p-2 rounded-xl"
@@ -82,7 +86,7 @@ function HomeScreen() {
           </ScrollView>
         </View>
         <View className="mt-8 pl-5">
-          <Text className="font-semibold text-xl">Hot Sales </Text>
+          <Text className="font-semibold text-xl">Hot Sales</Text>
           <ScrollView
             horizontal
             showsHorizontalScrollIndicator={false}

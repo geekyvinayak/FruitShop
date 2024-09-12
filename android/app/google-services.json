@@ -12,7 +12,20 @@
           "package_name": "com.fruitshop"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "192921244583-er0rbd74m27k729qn64q7cga902sq591.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.fruitshop",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "192921244583-jkv87j1pkn6pcoo29au4g9vqqffovjek.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyBeMj-SEEXNcDCS1Z11ovkXV_eiQ4lknUk"
@@ -20,7 +33,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "192921244583-jkv87j1pkn6pcoo29au4g9vqqffovjek.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
